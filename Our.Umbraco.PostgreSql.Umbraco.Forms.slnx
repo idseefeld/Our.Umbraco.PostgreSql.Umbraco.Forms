@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Our.Umbraco.PostgreSql.Umbraco.Forms/Our.Umbraco.PostgreSql.Umbraco.Forms.pack.csproj" />
+  <Project Path="Umbraco19.www/Umbraco19.www.csproj" />
+</Solution>
