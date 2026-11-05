@@ -12,6 +12,8 @@
     <PackageReference Include="Umbraco.Cms" />
     <PackageReference Include="Umbraco.Forms" />
     <PackageReference Include="Umbraco.Licenses" />
+    <PackageReference Include="uSync" />
+    <PackageReference Include="uSync.Forms" />
   </ItemGroup>
 
   <PropertyGroup>

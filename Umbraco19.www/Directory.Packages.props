@@ -17,5 +17,7 @@
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="$(UmbracoAppLocalIcuVersion)" />
     <PackageVersion Include="Umbraco.Forms" Version="19.0.0-beta" />
     <PackageVersion Include="Umbraco.Licenses" Version="19.0.0-beta" />
+    <PackageVersion Include="uSync" Version="19.0.0-beta01" />
+    <PackageVersion Include="uSync.Forms" Version="18.1.0" />
   </ItemGroup>
 </Project>
