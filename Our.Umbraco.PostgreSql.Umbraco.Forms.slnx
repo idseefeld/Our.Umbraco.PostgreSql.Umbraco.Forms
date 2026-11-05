@@ -1,4 +1,17 @@
 <Solution>
+  <Folder Name="/NPoco/">
+    <Project Path="NPoco/src/NPoco.Abstractions/NPoco.Abstractions.csproj" />
+    <Project Path="NPoco/src/NPoco.SqlServer/NPoco.SqlServer.csproj" />
+    <Project Path="NPoco/src/NPoco/NPoco.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path=".gitmodules" />
+    <File Path="Directory.Build.props" />
+    <File Path="LICENSE" />
+    <File Path="readme.md" />
+  </Folder>
   <Project Path="Our.Umbraco.PostgreSql.Umbraco.Forms/Our.Umbraco.PostgreSql.Umbraco.Forms.pack.csproj" />
   <Project Path="Umbraco19.www/Umbraco19.www.csproj" />
 </Solution>
