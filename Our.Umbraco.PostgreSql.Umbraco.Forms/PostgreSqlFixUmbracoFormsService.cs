@@ -2,8 +2,11 @@ using Microsoft.Extensions.Logging;
 using Our.Umbraco.PostgreSql.Services;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
+using Umbraco.Cms.Core;
+using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 
 namespace Our.Umbraco.PostgreSql.Umbraco.Forms
@@ -54,8 +57,12 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
             return value;
         }
 
-        private bool IsUfCommand(DbCommand cmd) =>
-            string.IsNullOrEmpty(cmd.CommandText)
+        private bool IsUfCommand(DbCommand cmd)
+        {
+            var isUfCommand = string.IsNullOrEmpty(cmd.CommandText);
+
+            isUfCommand = isUfCommand
+                || cmd.CommandText.Contains(" umbracoUser")
                 || cmd.CommandText.Contains(" UF")
                 || cmd.CommandText.Contains(" [UF")
                 || cmd.CommandText.Contains(" \"UF")
@@ -66,6 +73,9 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
                 || cmd.CommandText.StartsWith("DELETE FROM umbracoRelation")
                 || cmd.CommandText.StartsWith("INSERT INTO umbracoLog (userId,")
                 || cmd.CommandText.StartsWith("SELECT DISTINCT NodeId FROM umbracoLog WHERE entityType");
+
+            return isUfCommand;
+        }
 
         // Matches: UPDATE UFXxx SET col = col AT TIME ZONE 'Windows Tz' AT TIME ZONE 'UTC'
         private static readonly Regex SimpleAtTimeZonePattern = new(
@@ -388,6 +398,9 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
                     }
                     switch (switchText)
                     {
+                        case "SELECT id FROM umbracoUser":
+                            cmd.CommandText = "SELECT \"id\" FROM \"umbracoUser\"";
+                            break;
                         case "SELECT \"Id\" AS \"Id\", \"Form\" AS \"Form\", \"Created\" AS \"Created\", \"Updated\" AS \"Updated\", \"CurrentPage\" AS \"CurrentPage\", \"UmbracoPageId\" AS \"UmbracoPageId\", \"UmbracoPageKey\" AS \"UmbracoPageKey\", \"IP\" AS \"IP\", \"MemberKey\" AS \"MemberKey\", \"UniqueId\" AS \"UniqueId\", \"State\" AS \"StateAsString\", \"RecordData\" AS \"RecordData\", \"Culture\" AS \"Culture\", \"AdditionalData\" AS \"AdditionalData\" FROM \"UFRecords\"\nWHERE (Created >= @p0 AND Created <= @p1)\nAND (Form = @p2)":
                             cmd.CommandText = "SELECT \"Id\" AS \"Id\", \"Form\" AS \"Form\", \"Created\" AS \"Created\", \"Updated\" AS \"Updated\", \"CurrentPage\" AS \"CurrentPage\", \"UmbracoPageId\" AS \"UmbracoPageId\", \"UmbracoPageKey\" AS \"UmbracoPageKey\", \"IP\" AS \"IP\", \"MemberKey\" AS \"MemberKey\", \"UniqueId\" AS \"UniqueId\", \"State\" AS \"StateAsString\", \"RecordData\" AS \"RecordData\", \"Culture\" AS \"Culture\", \"AdditionalData\" AS \"AdditionalData\" FROM \"UFRecords\" WHERE (\"Created\" >= @p0 AND \"Created\" <= @p1) AND (\"Form\" = @p2)";
                             break;
