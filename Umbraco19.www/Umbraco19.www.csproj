@@ -42,6 +42,7 @@
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+    <UserSecretsId>7cbc6cf7-ac26-4d33-9866-02c1147dc1cc</UserSecretsId>
   </PropertyGroup>
 
 
@@ -50,11 +51,6 @@
     <ProjectReference Include="..\NPoco\src\NPoco.SqlServer\NPoco.SqlServer.csproj" />
     <ProjectReference Include="..\NPoco\src\NPoco\NPoco.csproj" />
     <ProjectReference Include="..\Our.Umbraco.PostgreSql.Umbraco.Forms\Our.Umbraco.PostgreSql.Umbraco.Forms.pack.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!-- Keep the local appsettings.json override out of publish output -->
-    <Content Update="appsettings.Local.json" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
 
