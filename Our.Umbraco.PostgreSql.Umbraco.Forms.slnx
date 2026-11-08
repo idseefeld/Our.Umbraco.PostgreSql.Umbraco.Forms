@@ -12,7 +12,6 @@
     <File Path=".gitignore" />
     <File Path=".gitmodules" />
     <File Path="Package/Directory.Build.props" />
-    <File Path="Package/Our.Umbraco.PostgreSql.Umbraco.Forms/wwwroot/App_Plugins/Our.Umbraco.PostgreSql.Umbraco.Forms/umbraco-package.json" />
   </Folder>
   <Project Path="Umbraco19.www/Umbraco19.www.csproj" />
 </Solution>
