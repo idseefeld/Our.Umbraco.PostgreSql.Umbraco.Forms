@@ -38,20 +38,18 @@
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="$(UmbracoAppLocalIcuVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NPoco\src\NPoco.Abstractions\NPoco.Abstractions.csproj" />
+    <ProjectReference Include="..\NPoco\src\NPoco.SqlServer\NPoco.SqlServer.csproj" />
+    <ProjectReference Include="..\NPoco\src\NPoco\NPoco.csproj" />
+    <ProjectReference Include="..\Package\Our.Umbraco.PostgreSql.Umbraco.Forms\Our.Umbraco.PostgreSql.Umbraco.Forms.csproj" />
+  </ItemGroup>
 
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
     <UserSecretsId>7cbc6cf7-ac26-4d33-9866-02c1147dc1cc</UserSecretsId>
   </PropertyGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\NPoco\src\NPoco.Abstractions\NPoco.Abstractions.csproj" />
-    <ProjectReference Include="..\..\NPoco\src\NPoco.SqlServer\NPoco.SqlServer.csproj" />
-    <ProjectReference Include="..\..\NPoco\src\NPoco\NPoco.csproj" />
-    <ProjectReference Include="..\Our.Umbraco.PostgreSql.Umbraco.Forms\Our.Umbraco.PostgreSql.Umbraco.Forms.pack.csproj" />
-  </ItemGroup>
 
 
 </Project>

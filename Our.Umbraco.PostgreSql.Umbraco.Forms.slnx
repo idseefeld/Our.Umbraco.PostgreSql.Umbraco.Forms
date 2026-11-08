@@ -14,5 +14,5 @@
     <File Path="Package/Directory.Build.props" />
     <File Path="Package/Our.Umbraco.PostgreSql.Umbraco.Forms/wwwroot/App_Plugins/Our.Umbraco.PostgreSql.Umbraco.Forms/umbraco-package.json" />
   </Folder>
-  <Project Path="Umbraco17.www/Umbraco17.www.csproj" />
+  <Project Path="Umbraco19.www/Umbraco19.www.csproj" />
 </Solution>
