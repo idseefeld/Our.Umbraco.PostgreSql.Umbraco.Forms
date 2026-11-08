@@ -1,14 +1,10 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Page>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Form>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "master.cshtml";
-    var formId = Model.Picker;
-    var theme = Model.Theme ?? "default";
+    var formId = Model.FormPicker;
+    var theme = Model.FormTheme ?? "default";
 }
-
-<h1>@Model.Headline</h1>
-
-@Model.Bodytext
 
 @if (formId != null)
 {
