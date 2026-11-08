@@ -8,10 +8,10 @@
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path=".gitmodules" />
-    <File Path="Directory.Build.props" />
+    <File Path="Package/Directory.Build.props" />
     <File Path="LICENSE" />
     <File Path="readme.md" />
   </Folder>
-  <Project Path="Our.Umbraco.PostgreSql.Umbraco.Forms/Our.Umbraco.PostgreSql.Umbraco.Forms.pack.csproj" />
-  <Project Path="Umbraco19.www/Umbraco19.www.csproj" />
+  <Project Path="Package/Our.Umbraco.PostgreSql.Umbraco.Forms/Our.Umbraco.PostgreSql.Umbraco.Forms.pack.csproj" />
+  <Project Path="Package/Umbraco19.www/Umbraco19.www.csproj" />
 </Solution>
