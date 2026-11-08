@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <PackageId>Our.Umbraco.PostgreSql.Umbraco.Forms</PackageId>
+    <Title>Umbraco CMS - Persistence - Umbraco.Forms - PostgreSQL</Title>
+    <Description>Adds support for Umbraco.Forms with PostgreSQL.</Description>
+    <StaticWebAssetBasePath>\</StaticWebAssetBasePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="animal-prevaalues.txt" />
+    <None Remove="UFDatasource-definition.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Our.Umbraco.PostgreSql.Umbraco.License" Version="17.9.0-rc3" />
+    <PackageReference Include="Umbraco.Forms.Core.Providers" Version="17.7.0-rc2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App_Plugins\Our.Umbraco.PostgreSql.Umbraco.Forms\umbraco-package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
