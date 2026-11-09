@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Our.Umbraco.PostgreSql.Umbraco.License" Version="17.9.0-rc3" />
-    <PackageReference Include="Umbraco.Forms.Core.Providers" Version="17.7.0-rc2" />
+    <PackageReference Include="Our.Umbraco.PostgreSql.Umbraco.License" Version="[17.9.0-rc3,17.10.0)" />
+    <PackageReference Include="Umbraco.Forms.Core.Providers" Version="[17.7.0-rc2,17.8.0)" />
   </ItemGroup>
 
   <ItemGroup>
