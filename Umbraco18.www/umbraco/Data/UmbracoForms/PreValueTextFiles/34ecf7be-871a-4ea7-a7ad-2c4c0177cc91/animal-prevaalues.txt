@@ -1,7 +1,7 @@
-Ape
-Dolphin
-Donky
-Cat
-Dog
-Horse
-Bird
+Ape|
+Dolphin|
+Donky|
+Cat|
+Dog|
+Horse|
+Bird|

@@ -74,6 +74,21 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string FigCaption => this.Value<string>(_publishedValueFallback, "figCaption");
 
 		///<summary>
+		/// Layer Level
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.4.0-rc+4b5e25b")]
+		[ImplementPropertyType("layerLevel")]
+		public virtual int LayerLevel => this.Value<int>(_publishedValueFallback, "layerLevel");
+
+		///<summary>
+		/// Media Item: Select image and crop
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.4.0-rc+4b5e25b")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("mediaItem")]
+		public virtual global::WysiwgUmbracoCommunityExtensions.Models.MediaWithSelectedCrop MediaItem => this.Value<global::WysiwgUmbracoCommunityExtensions.Models.MediaWithSelectedCrop>(_publishedValueFallback, "mediaItem");
+
+		///<summary>
 		/// Rotation
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.4.0-rc+4b5e25b")]
