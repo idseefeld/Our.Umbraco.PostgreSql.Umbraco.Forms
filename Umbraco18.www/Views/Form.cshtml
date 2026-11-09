@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Form>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+@await Component.InvokeAsync("RenderForm", new { formId = @Model.Picker, 
+                                                 theme = @Model.Theme,
+                                                 includeScripts = false })

@@ -13,8 +13,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Our.Umbraco.PostgreSql.Umbraco.License" Version="[17.9.0-rc3,17.10.0)" />
-		<PackageReference Include="Umbraco.Forms.Core.Providers" Version="[17.7.0-rc2,17.8.0)" />
+		<PackageReference Include="Our.Umbraco.PostgreSql.Umbraco.License" Version="[18.3.0,18.4.0)" />
+		<PackageReference Include="Umbraco.Forms.Core.Providers" Version="[18.3.0-rc2,18.4.0)" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -61,12 +61,8 @@
 		</Task>
 	</UsingTask>
 
-	<Target Name="SynchronizeUmbracoPackageManifestVersion"
-			BeforeTargets="PrepareForBuild;ResolveStaticWebAssetsInputs;GenerateNuspec"
-			Condition="'$(DesignTimeBuild)' != 'true'">
-		<SynchronizeUmbracoPackageVersion
-		  ManifestPath="$(MSBuildProjectDirectory)\wwwroot\App_Plugins\Our.Umbraco.PostgreSql.Umbraco.Forms\umbraco-package.json"
-		  Version="$(Version)" />
+	<Target Name="SynchronizeUmbracoPackageManifestVersion" BeforeTargets="PrepareForBuild;ResolveStaticWebAssetsInputs;GenerateNuspec" Condition="'$(DesignTimeBuild)' != 'true'">
+		<SynchronizeUmbracoPackageVersion ManifestPath="$(MSBuildProjectDirectory)\wwwroot\App_Plugins\Our.Umbraco.PostgreSql.Umbraco.Forms\umbraco-package.json" Version="$(Version)" />
 	</Target>
 
 </Project>

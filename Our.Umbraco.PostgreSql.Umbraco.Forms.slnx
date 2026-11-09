@@ -13,5 +13,5 @@
     <File Path=".gitmodules" />
     <File Path="Package/Directory.Build.props" />
   </Folder>
-  <Project Path="Umbraco17.www/Umbraco17.www.csproj" />
+  <Project Path="Umbraco18.www/Umbraco18.www.csproj" Id="7c30e858-4ddc-40c3-82a8-84465940c3e2" />
 </Solution>

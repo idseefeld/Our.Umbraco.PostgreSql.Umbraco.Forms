@@ -2,8 +2,8 @@
 <Project>
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
-		<VersionPrefix>17.9.0</VersionPrefix>
-		<PreReleaseSuffix>-rc4</PreReleaseSuffix>
+		<VersionPrefix>18.4.0</VersionPrefix>
+		<PreReleaseSuffix>-rc1</PreReleaseSuffix>
 		<AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
 		<FileVersion>$(VersionPrefix)</FileVersion>
 		<Version>$(VersionPrefix)$(PreReleaseSuffix)</Version>
