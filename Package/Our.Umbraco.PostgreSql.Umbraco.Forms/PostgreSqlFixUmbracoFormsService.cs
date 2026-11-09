@@ -16,6 +16,34 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
     /// </summary>
     public class PostgreSqlFixUmbracoFormsService(ILogger<PostgreSqlFixUmbracoFormsService> logger) : PostgreSqlFixServiceBase
     {
+        public override bool InterceptCommandExecuting(DbCommand cmd)
+        {
+            if (cmd.CommandText.Equals("SELECT id FROM umbracoUser"))
+            {
+                cmd.CommandText = "SELECT \"id\" FROM \"umbracoUser\"";
+                return true;
+            }
+
+            if (!IsUfCommand(cmd))
+            {
+                return true;
+            }
+
+            var success = base.InterceptCommandExecuting(cmd);
+
+            success = success && FixCommandInternal(cmd);
+
+            if (!success)
+            {
+                if (cmd.CommandText.Equals("DROP INDEX \"IX_UFRecords_Form_Created\" ON \"UFRecords\""))
+                {
+                    cmd.CommandText = "DROP INDEX IF EXISTS \"IX_UFRecords_Form_Created\"";
+                }
+            }
+
+            return success;
+        }
+
         public override Func<object, object>? GetParameterConverter(DbCommand cmd, Type sourceType)
         {
             if (!IsUfCommand(cmd))
@@ -62,7 +90,6 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
             var isUfCommand = string.IsNullOrEmpty(cmd.CommandText);
 
             isUfCommand = isUfCommand
-                || cmd.CommandText.Contains(" umbracoUser")
                 || cmd.CommandText.Contains(" UF")
                 || cmd.CommandText.Contains(" [UF")
                 || cmd.CommandText.Contains(" \"UF")
@@ -398,9 +425,6 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
                     }
                     switch (switchText)
                     {
-                        case "SELECT id FROM umbracoUser":
-                            cmd.CommandText = "SELECT \"id\" FROM \"umbracoUser\"";
-                            break;
                         case "SELECT \"Id\" AS \"Id\", \"Form\" AS \"Form\", \"Created\" AS \"Created\", \"Updated\" AS \"Updated\", \"CurrentPage\" AS \"CurrentPage\", \"UmbracoPageId\" AS \"UmbracoPageId\", \"UmbracoPageKey\" AS \"UmbracoPageKey\", \"IP\" AS \"IP\", \"MemberKey\" AS \"MemberKey\", \"UniqueId\" AS \"UniqueId\", \"State\" AS \"StateAsString\", \"RecordData\" AS \"RecordData\", \"Culture\" AS \"Culture\", \"AdditionalData\" AS \"AdditionalData\" FROM \"UFRecords\"\nWHERE (Created >= @p0 AND Created <= @p1)\nAND (Form = @p2)":
                             cmd.CommandText = "SELECT \"Id\" AS \"Id\", \"Form\" AS \"Form\", \"Created\" AS \"Created\", \"Updated\" AS \"Updated\", \"CurrentPage\" AS \"CurrentPage\", \"UmbracoPageId\" AS \"UmbracoPageId\", \"UmbracoPageKey\" AS \"UmbracoPageKey\", \"IP\" AS \"IP\", \"MemberKey\" AS \"MemberKey\", \"UniqueId\" AS \"UniqueId\", \"State\" AS \"StateAsString\", \"RecordData\" AS \"RecordData\", \"Culture\" AS \"Culture\", \"AdditionalData\" AS \"AdditionalData\" FROM \"UFRecords\" WHERE (\"Created\" >= @p0 AND \"Created\" <= @p1) AND (\"Form\" = @p2)";
                             break;
@@ -862,28 +886,6 @@ namespace Our.Umbraco.PostgreSql.Umbraco.Forms
             else
             {
                 success = false;
-            }
-
-            return success;
-        }
-
-        public override bool InterceptCommandExecuting(DbCommand cmd)
-        {
-            if (!IsUfCommand(cmd))
-            {
-                return true;
-            }
-
-            var success = base.InterceptCommandExecuting(cmd);
-
-            success = success && FixCommandInternal(cmd);
-
-            if (!success)
-            {
-                if (cmd.CommandText.Equals("DROP INDEX \"IX_UFRecords_Form_Created\" ON \"UFRecords\""))
-                {
-                    cmd.CommandText = "DROP INDEX IF EXISTS \"IX_UFRecords_Form_Created\"";
-                }
             }
 
             return success;
