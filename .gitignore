@@ -417,5 +417,6 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-Umbraco17.www/umbraco/*
-Umbraco19.www/umbraco/*
+Umbraco17.www
+Umbraco18.www
+# Umbraco19.www
